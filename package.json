@@ -1,0 +1,25 @@
+{
+  "name": "supermarket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "inde.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  },
+  "scripts": {
+    "test": "jest",
+    "postest": "mongo delet",
+    "start": "cross-env NODE_ENV=test nodemon index.js",
+    "dev": "nodemon index.js --ignore __tests__"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
