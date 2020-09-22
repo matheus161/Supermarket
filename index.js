@@ -7,6 +7,6 @@ app.listen(process.env.PORT, (err) => {
     if (err) {
         return console.log("err: ", err);
     }
-    return console.log(`Server running at http://localhost:3001`)
+    return console.log(`Server running at http://localhost:3000`)
 });
 
