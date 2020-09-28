@@ -33,7 +33,7 @@ class UserController {
 
     async store(req, res) {
         try {
-            const { login, email, password, permissions } = req.body;
+            const { login, email, password, permissions, } = req.body;
             const checkEmail = await User.findOne({ email: email });
 
             if(checkEmail) {

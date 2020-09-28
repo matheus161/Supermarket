@@ -23,28 +23,37 @@ const UserSchema = new mongoose.Schema(
 
         permissions: {
             type: String,
-            required: true,            
+            required: true,
+        },
+        passwordResetToken: {
+            type: String,
+            select: false,
+        },
+        passwordResetExpires: {
+            type: Date,
+            select: false,
         }
     },
+
     {
         timestamps: true,
     }
 );
 
 // Checking if the password was modified, if it's not, let the same
-UserSchema.pre("save", async function bCryptPassword(next){
-    if(!this.isModified("password")) next();
+UserSchema.pre("save", async function bCryptPassword(next) {
+    if (!this.isModified("password")) next();
 
     this.password = await bcrypt.hash(this.password, 8);
 });
 // Comparing the password that it sent with the pass that it saved before
 UserSchema.methods = {
-    comparePassword(password){
+    comparePassword(password) {
         return bcrypt.compare(password, this.password);
     },
 
     createToken() {
-        return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
+        return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
             expiresIn: 300000
         })
     }

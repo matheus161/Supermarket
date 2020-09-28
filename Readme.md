@@ -12,6 +12,10 @@ npm install jsonwebtoken
 
 npm install bcryptjs
 
-npm add cors (fazer api)
-
 npm install dotenv (vai simular o env quando for upar)
+
+npm install nodemailer
+
+npm i nodemailer-express-handlebars
+
+

@@ -13,6 +13,8 @@
     "joi": "^17.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.4",
+    "nodemailer": "^6.4.11",
+    "nodemailer-express-handlebars": "^4.0.0",
     "nodemon": "^2.0.4",
     "segments": "^1.0.1"
   },
