@@ -1,0 +1,259 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Projeto Criado para o Supermarket",
+    "version": "1.0.0",
+    "title": "Supermarket",
+    "termsOfService": "nullable",
+    "contact": {
+      "email": "matheuspinheiro@softeam.com.br"
+    },
+    "license": {
+      "name": "2020 SofTeam",
+      "url": "https://softeam.com.br/"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Cria um usuário",
+        "description": "Rota na qual criará um novo usuário no banco",
+        "operationId": "addUser",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados utilizados para criar um usuário",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Email já existente"
+          },
+          "500": {
+            "description": "Error interno de servidor"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Retorna todos os usuários",
+        "description": "Rota que retornará todos os usuários cadastrados",
+        "operationId": "listUsers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "500": {
+            "description": "Error Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/user/{userID}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Retorna um usuário",
+        "description": "Rota que retornará um usuário cadastrado",
+        "operationId": "listUser",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na Operação",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "500": {
+            "description": "Error de Servidor"
+          }
+        }
+      }
+    },
+    "/authenticate": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Faz o login",
+        "description": "Rota na qual fará a autenticação na aplicação",
+        "operationId": "login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados utilizados para autenticar-se na aplicação",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Senha ou usuário inválidos"
+          },
+          "500": {
+            "description": "Error interno de servidor"
+          }
+        }
+      }
+    },
+    "/forgotPassword": {
+      "post": {
+        "tags": [
+          "forgotPassword"
+        ],
+        "summary": "Recuperação de senha",
+        "description": "Rota na qual fará a recuperação de senha através do email",
+        "operationId": "forgotPassword",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados utilizados para recuperação de senha",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação"
+          },
+          "400": {
+            "description": "Não foi possível realizar a operação"
+          },
+          "500": {
+            "description": "Error interno do servidor"
+          }
+        }
+      }
+    },
+    "/resetPassword": {
+      "post": {
+        "tags": [
+          "resetPassword"
+        ],
+        "summary": "Resetar a senha",
+        "description": "Rota na qual irá resetar a senha",
+        "operationId": "resetPassword",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados utilizados para resetar a senha",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação"
+          },
+          "400": {
+            "description": "Token inválido ou usuário não encontrado"
+          },
+          "404": {
+            "description": "Token expirado"
+          },
+          "500": {
+            "description": "Error interno do servidor"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "releaseDate": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

@@ -40,7 +40,7 @@ const UserSchema = new mongoose.Schema(
     }
 );
 
-// Checking if the password was modified, if it's not, let the same
+// Checking if the password was modified, if it's not, just send
 UserSchema.pre("save", async function bCryptPassword(next) {
     if (!this.isModified("password")) next();
 
@@ -53,9 +53,14 @@ UserSchema.methods = {
     },
 
     createToken() {
-        return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+        return jwt.sign({ id: this._id, permissions: this.permissions }, process.env.JWT_SECRET, {
             expiresIn: 300000
         })
+    },
+
+    decodedToken(token) {
+        var data = jwt.verify(token, process.env.JWT_SECRET);
+        return data;
     }
 };
 

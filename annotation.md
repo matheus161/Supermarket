@@ -57,20 +57,26 @@
     
 }
 
-
 PROBLEMAS:
-
-- DELETAR USUÁRIO 
-- LISTAR USUÁRIO
-- CONTROLE DE ESTOQUE PARA VÁRIAS LOJAS
 - CHECAR SE O EMAIL ESTÁ NO PADRÃO EMAIL ANTES DE EXECUTAR O STORE DO USER
+
+FORA DO ESCOPO:
+
+- DELETAR USUÁRIO
+    * Não é necessário no MVP
+- LISTAR USUÁRIO 
+    * Não é necessário no MVP
+- CONTROLE DE ESTOQUE PARA VÁRIAS LOJAS 
+    * Não é necessário no MVP
 - PERMITIR QUE O USUÁRIO TROQUE A SENHA (UPDATE STORE)
+    * Não é necessário no MVP
 - DEVE POSSUIR UM CARRINHO:
         - O usuário deve adicionar produtos dentro de um carrinho.
         - O usuário deve remover ou atualizar os produtos de um carrinho.
         - O usuário somente faz a compra sem precisar de nemhuma informação adicional.
         - Ao acessar o carrinho irá aparecer o total da compra.
         - Não há nemhum tipo de desconto nas compras. 
+    * Não é necessário no MVP
 
 
 -------------------- MVP --------------------

@@ -14,7 +14,7 @@ class AuthController {
             }
 
             if (!(await user.comparePassword(password))) {
-                return res.status(400).json({ message: "Senha Inválida" });
+                return res.status(400).json({ message: "Senha ou usuário Inválidos" });
             }
 
             return res.status(200).json({
@@ -88,7 +88,7 @@ class AuthController {
             // Verifica se o Token não está expirado     
             const now = new Date();                  
             if (now > user.passwordResetExpires)
-                return res.status(400).send({ error: 'Token epired, generate a new one' });
+                return res.status(404).send({ error: 'Token epired, generate a new one' });
             
             user.password = password
 
@@ -96,7 +96,7 @@ class AuthController {
             
             res.send();
         } catch (error) {
-            res.status(400).send({ error: 'Cannot reset password, try again '});
+            res.status(500).send({ error: 'Cannot reset password, try again '});
         }
     }
 

@@ -16,7 +16,8 @@
     "nodemailer": "^6.4.11",
     "nodemailer-express-handlebars": "^4.0.0",
     "nodemon": "^2.0.4",
-    "segments": "^1.0.1"
+    "segments": "^1.0.1",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "cross-env": "^7.0.2"

@@ -18,4 +18,6 @@ npm install nodemailer
 
 npm i nodemailer-express-handlebars
 
+npm install swagger-ui-express
+
 
